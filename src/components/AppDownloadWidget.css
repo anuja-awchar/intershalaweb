@@ -239,15 +239,18 @@
 
   /* Refined Mobile Extended State - Full Widget Card */
   .app-download-widget.mobile-expanded {
-    /* Position the whole widget container */
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    /* Or 50% + transform for centering if desired, but bottom right is fine */
+    right: 50%;
+    /* Center horizontally */
+    transform: translateX(50%);
+    /* Center horizontally */
     z-index: 2005;
+    width: 320px;
+    /* Fixed width to match desktop exactly */
   }
 
   /* Override the default content styling for expanded state */
@@ -255,17 +258,21 @@
     position: relative;
     bottom: auto;
     right: auto;
-    width: 320px;
-    /* Exact Desktop Width */
+    width: 100%;
+    /* Fill the 320px container */
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
-    transform: none;
     opacity: 1;
     pointer-events: all;
     background: white;
     padding: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* Row layout like desktop */
+    align-items: flex-start;
+    /* Align top */
+    gap: 16px;
+    box-sizing: border-box;
   }
 
   .app-download-widget.mobile-expanded .adw-header {
@@ -278,6 +285,14 @@
   /* When expanded, HIDE the mobile toggle FAB */
   .app-download-widget.mobile-expanded .adw-mobile-toggle {
     display: none;
+  }
+
+  /* Show QR Code on Mobile */
+  .app-download-widget.mobile-expanded .adw-qr-side {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
 
   /* When expanded, SHOW the Close Button (Desktop style) */
@@ -293,16 +308,17 @@
   /* Stats Row - Make visible and styled for mobile */
   .adw-stats-row {
     display: flex !important;
-    gap: 16px;
+    gap: 12px;
     margin-bottom: 16px;
     border-bottom: 1px solid #f0f0f0;
     padding-bottom: 12px;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .adw-stat-item {
-    align-items: center;
+    align-items: flex-start;
+    /* Align left */
   }
 
   .adw-stat-value {
