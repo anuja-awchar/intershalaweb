@@ -23,10 +23,14 @@ const AppDownloadWidget = () => {
 
       <div className="adw-header">Download the App!</div>
       <div className="adw-content">
-        {/* Mobile Menu Title */}
-        <div className="adw-mobile-title">Get the App</div>
 
-        <button className="adw-close-btn" onClick={() => setIsVisible(false)}>
+        <button className="adw-close-btn" onClick={() => {
+          if (window.innerWidth <= 768) {
+            setIsMobileExpanded(false);
+          } else {
+            setIsVisible(false);
+          }
+        }}>
           <FaTimes />
         </button>
 
@@ -41,8 +45,7 @@ const AppDownloadWidget = () => {
 
         <div className="adw-info-side">
           <div className="adw-stats-row">
-            <div className="adw-stat-item">
-              <div className="adw-stat-value">4.2 <FaStar /></div>
+            <div className="adw-content">
               <div className="adw-stat-label">39K Reviews</div>
             </div>
             <div className="adw-separator"></div>

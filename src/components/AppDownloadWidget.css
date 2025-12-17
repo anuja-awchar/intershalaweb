@@ -212,12 +212,128 @@
     /* Remove backdrop */
   }
 
-  /* Hide Desktop Elements initially */
-  .adw-header,
-  .adw-content>button.adw-close-btn,
-  .adw-qr-side,
-  .adw-stats-row {
+  /* Hide Desktop Elements initially where not needed */
+  /* QR Code hidden on mobile as you can't scan screen */
+  .adw-qr-side {
     display: none !important;
+  }
+
+  /* Initially hide header and content on mobile until expanded */
+  .adw-header,
+  .adw-content {
+    display: none;
+  }
+
+  /* When expanded, show Header and Content */
+  .app-download-widget.mobile-expanded .adw-header {
+    display: block !important;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+    width: 100%;
+    box-shadow: none;
+    margin-bottom: -1px;
+    /* Connect to content */
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  /* Refined Mobile Extended State - Full Widget Card */
+  .app-download-widget.mobile-expanded {
+    /* Position the whole widget container */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    /* Or 50% + transform for centering if desired, but bottom right is fine */
+    z-index: 2005;
+  }
+
+  /* Override the default content styling for expanded state */
+  .app-download-widget.mobile-expanded .adw-content {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 320px;
+    /* Exact Desktop Width */
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+    transform: none;
+    opacity: 1;
+    pointer-events: all;
+    background: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-download-widget.mobile-expanded .adw-header {
+    border-radius: 12px 12px 0 0;
+    width: 100%;
+    box-sizing: border-box;
+    /* Ensure header matches width */
+  }
+
+  /* When expanded, HIDE the mobile toggle FAB */
+  .app-download-widget.mobile-expanded .adw-mobile-toggle {
+    display: none;
+  }
+
+  /* When expanded, SHOW the Close Button (Desktop style) */
+  .app-download-widget.mobile-expanded .adw-close-btn {
+    display: flex !important;
+    /* Ensure it looks like desktop */
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 10;
+  }
+
+  /* Stats Row - Make visible and styled for mobile */
+  .adw-stats-row {
+    display: flex !important;
+    gap: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .adw-stat-item {
+    align-items: center;
+  }
+
+  .adw-stat-value {
+    font-size: 16px;
+    /* Back to normal size */
+  }
+
+  .adw-stat-value svg {
+    font-size: 12px;
+  }
+
+  .adw-stat-label {
+    font-size: 11px;
+  }
+
+  /* Reuse separator explicitly */
+  .adw-separator {
+    display: block;
+    width: 1px;
+    height: 24px;
+    background: #eee;
+    margin: 0;
+  }
+
+  .adw-separator::before {
+    display: none;
+  }
+
+  /* Mobile Title - Removed */
+  .adw-mobile-title {
+    display: none;
   }
 
   /* The Floating Button */
@@ -321,29 +437,62 @@
     text-align: center;
   }
 
+  /* Expanded Toggle Button Styling */
+  .app-download-widget.mobile-expanded .adw-mobile-toggle {
+    background: #FF4F6C;
+    /* Match header color when expanded */
+    transform: rotate(45deg);
+    position: fixed;
+    /* Keep it fixed at bottom */
+    bottom: 20px;
+    right: 20px;
+    z-index: 2003;
+  }
+
+  .app-download-widget.mobile-expanded .adw-mobile-toggle svg {
+    margin-bottom: 0;
+  }
+
+  .app-download-widget.mobile-expanded .adw-mobile-label {
+    display: none;
+  }
+
+  /* Close Button in Content */
+  .adw-close-btn {
+    display: none !important;
+  }
+
   /* Store Icons in Mobile Menu */
   .adw-info-side {
     width: 100%;
   }
 
   .adw-store-icons {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    /* Back to row if space allows */
+    gap: 12px;
     width: 100%;
     margin-top: 0;
   }
 
   .adw-store-icons span {
-    display: none;
+    display: inline-block;
+    /* Show 'Available on' if it fits */
+    font-size: 10px;
+    color: #888;
+    margin-right: -4px;
+    white-space: nowrap;
+    align-self: center;
   }
 
   .adw-store-icon {
-    font-size: 24px;
+    font-size: 20px;
     padding: 10px 16px;
     background: #f8f9fa;
-    border-radius: 10px;
+    border-radius: 8px;
     color: #555;
-    width: 100%;
+    width: auto;
+    flex: 1;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -357,10 +506,7 @@
     transform: none;
   }
 
-  /* Remove separator styling since we use adw-mobile-title now */
-  .adw-separator {
-    display: none;
-  }
+
 }
 
 /* Hide toggle on desktop */
