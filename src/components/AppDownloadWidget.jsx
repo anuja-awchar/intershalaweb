@@ -1,14 +1,26 @@
+
 import React, { useState } from 'react';
-import { FaStar, FaApple, FaGooglePlay, FaTimes } from 'react-icons/fa';
+import { FaStar, FaApple, FaGooglePlay, FaTimes, FaBolt } from 'react-icons/fa';
 import './AppDownloadWidget.css';
 
 const AppDownloadWidget = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isMobileExpanded, setIsMobileExpanded] = useState(false);
 
   if (!isVisible) return null;
 
+  const toggleMobileMenu = () => {
+    setIsMobileExpanded(!isMobileExpanded);
+  };
+
   return (
-    <div className="app-download-widget">
+    <div className={`app-download-widget ${isMobileExpanded ? 'mobile-expanded' : ''}`}>
+      {/* Mobile Toggle Button (Visible only on mobile) */}
+      <div className="adw-mobile-toggle" onClick={toggleMobileMenu}>
+        <FaBolt />
+        <span className="adw-mobile-label">App</span>
+      </div>
+
       <div className="adw-header">Download the App!</div>
       <div className="adw-content">
         <button className="adw-close-btn" onClick={() => setIsVisible(false)}>

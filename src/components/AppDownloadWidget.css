@@ -18,6 +18,7 @@
     transform: translateY(100px) scale(0.8);
     opacity: 0;
   }
+
   100% {
     transform: translateY(0) scale(1);
     opacity: 1;
@@ -41,9 +42,17 @@
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .adw-content {
@@ -179,7 +188,185 @@
 }
 
 @media (max-width: 768px) {
+
+  /* Reset Desktop Styles that conflict */
   .app-download-widget {
+    background: transparent;
+    box-shadow: none;
+    width: auto;
+    border-radius: 0;
+    padding: 0;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    /* Reset left positioning */
+    transform: none;
+    /* Reset transform */
+    animation: none;
+    filter: none;
+    overflow: visible;
+  }
+
+  .app-download-widget::before {
+    display: none;
+    /* Remove backdrop */
+  }
+
+  /* Hide Desktop Elements initially */
+  .adw-header,
+  .adw-content>button.adw-close-btn,
+  .adw-qr-side,
+  .adw-stats-row {
+    display: none !important;
+  }
+
+  /* The Floating Button */
+  .adw-mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #00A5EC;
+    border-radius: 50%;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 165, 236, 0.4);
+    cursor: pointer;
+    z-index: 2002;
+    transition: transform 0.2s, background 0.2s;
+    position: relative;
+    animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes bounceIn {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .adw-mobile-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  .adw-mobile-toggle svg {
+    font-size: 24px;
+    margin-bottom: 2px;
+  }
+
+  .adw-mobile-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* Mobile Content Container (Hidden by default, shown on expansion) */
+  .adw-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    background: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+    width: 220px;
+    align-items: center;
+    gap: 12px;
+    transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: bottom right;
+    z-index: 2001;
+  }
+
+  /* Expanded State */
+  .app-download-widget.mobile-expanded .adw-content {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .app-download-widget.mobile-expanded .adw-mobile-toggle {
+    background: #333;
+    transform: rotate(45deg);
+  }
+
+  .app-download-widget.mobile-expanded .adw-mobile-toggle svg {
+    margin-bottom: 0;
+    /* Align nicer when rotated */
+  }
+
+  .app-download-widget.mobile-expanded .adw-mobile-label {
+    display: none;
+    /* Hide label when rotated to close */
+  }
+
+  /* Store Icons in Mobile Menu */
+  .adw-info-side {
+    width: 100%;
+  }
+
+  .adw-store-icons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .adw-store-icons span {
+    display: none;
+  }
+
+  .adw-store-icon {
+    font-size: 24px;
+    padding: 10px 16px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    color: #555;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+  }
+
+  .adw-store-icon:hover {
+    background: #eef5ff;
+    color: #00A5EC;
+    border-color: #00A5EC;
+    transform: none;
+  }
+
+  /* Reuse separator for title style */
+  .adw-separator {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    text-align: center;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .adw-separator::before {
+    content: 'Get the App';
+  }
+}
+
+/* Hide toggle on desktop */
+@media (min-width: 769px) {
+  .adw-mobile-toggle {
     display: none;
   }
 }
