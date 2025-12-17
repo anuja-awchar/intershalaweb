@@ -23,6 +23,9 @@ const AppDownloadWidget = () => {
 
       <div className="adw-header">Download the App!</div>
       <div className="adw-content">
+        {/* Mobile Menu Title */}
+        <div className="adw-mobile-title">Get the App</div>
+
         <button className="adw-close-btn" onClick={() => setIsVisible(false)}>
           <FaTimes />
         </button>

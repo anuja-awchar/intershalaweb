@@ -310,6 +310,17 @@
     /* Hide label when rotated to close */
   }
 
+  /* Mobile Title */
+  .adw-mobile-title {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 4px;
+    width: 100%;
+    text-align: center;
+  }
+
   /* Store Icons in Mobile Menu */
   .adw-info-side {
     width: 100%;
@@ -319,7 +330,7 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    margin-top: 4px;
+    margin-top: 0;
   }
 
   .adw-store-icons span {
@@ -346,27 +357,17 @@
     transform: none;
   }
 
-  /* Reuse separator for title style */
+  /* Remove separator styling since we use adw-mobile-title now */
   .adw-separator {
-    display: block;
-    width: 100%;
-    height: auto;
-    background: transparent;
-    text-align: center;
-    margin-bottom: 4px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #333;
-  }
-
-  .adw-separator::before {
-    content: 'Get the App';
+    display: none;
   }
 }
 
 /* Hide toggle on desktop */
 @media (min-width: 769px) {
-  .adw-mobile-toggle {
+
+  .adw-mobile-toggle,
+  .adw-mobile-title {
     display: none;
   }
 }
