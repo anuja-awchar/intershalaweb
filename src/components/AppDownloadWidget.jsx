@@ -6,14 +6,12 @@ const WidgetWrapper = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  background: transparent;
   font-family: 'Inter', sans-serif;
   z-index: 1000;
-  overflow: hidden;
   width: 320px;
   animation: slideUp 0.5s ease-out;
+  filter: drop-shadow(0 4px 20px rgba(0,0,0,0.15));
 
   @keyframes slideUp {
     from { transform: translateY(100px); opacity: 0; }
@@ -21,18 +19,22 @@ const WidgetWrapper = styled.div`
   }
 
   @media (max-width: 768px) {
-    display: none; /* Often hidden on mobile or shown as a banner */
+    display: none; 
   }
 `;
 
 const Header = styled.div`
-  background: linear-gradient(90deg, #FF516B 0%, #FF8E53 100%);
+  background: #FF4F6C;
   color: white;
-  padding: 12px 16px;
-  font-weight: 700;
-  font-size: 16px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 14px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+  width: fit-content;
+  position: relative;
+  top: 1px; /* Overlap slightly to avoid gap */
+  z-index: 2;
 `;
 
 const Content = styled.div`
@@ -40,6 +42,9 @@ const Content = styled.div`
   padding: 20px;
   gap: 20px;
   position: relative;
+  background: white;
+  border-radius: 12px;
+  border-top-left-radius: 0;
 `;
 
 const CloseButton = styled.button`
@@ -140,43 +145,43 @@ const StoreIcons = styled.div`
 `;
 
 const AppDownloadWidget = () => {
-    const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
 
-    if (!isVisible) return null;
+  if (!isVisible) return null;
 
-    return (
-        <WidgetWrapper>
-            <Header>Download the App!</Header>
-            <Content>
-                <CloseButton onClick={() => setIsVisible(false)}><FaTimes /></CloseButton>
+  return (
+    <WidgetWrapper>
+      <Header>Download the App!</Header>
+      <Content>
+        <CloseButton onClick={() => setIsVisible(false)}><FaTimes /></CloseButton>
 
-                <QrSide>
-                    <QrImage src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=InternshalaApp" alt="QR Code" />
-                    <ScanText>Scan the QR</ScanText>
-                </QrSide>
+        <QrSide>
+          <QrImage src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=InternshalaApp" alt="QR Code" />
+          <ScanText>Scan the QR</ScanText>
+        </QrSide>
 
-                <InfoSide>
-                    <StatsRow>
-                        <StatItem>
-                            <StatValue>4.2 <FaStar /></StatValue>
-                            <StatLabel>39K Reviews</StatLabel>
-                        </StatItem>
-                        <div style={{ width: 1, height: 20, background: '#eee' }}></div>
-                        <StatItem>
-                            <StatValue>50L+ <span style={{ fontSize: 12 }}>⬇</span></StatValue>
-                            <StatLabel>Downloads</StatLabel>
-                        </StatItem>
-                    </StatsRow>
+        <InfoSide>
+          <StatsRow>
+            <StatItem>
+              <StatValue>4.2 <FaStar /></StatValue>
+              <StatLabel>39K Reviews</StatLabel>
+            </StatItem>
+            <div style={{ width: 1, height: 20, background: '#eee' }}></div>
+            <StatItem>
+              <StatValue>50L+ <span style={{ fontSize: 12 }}>⬇</span></StatValue>
+              <StatLabel>Downloads</StatLabel>
+            </StatItem>
+          </StatsRow>
 
-                    <StoreIcons>
-                        <span>Available on</span>
-                        <FaApple title="App Store" />
-                        <FaGooglePlay title="Play Store" style={{ color: '#00d09c' }} />
-                    </StoreIcons>
-                </InfoSide>
-            </Content>
-        </WidgetWrapper>
-    );
+          <StoreIcons>
+            <span>Available on</span>
+            <FaApple title="App Store" />
+            <FaGooglePlay title="Play Store" style={{ color: '#00d09c' }} />
+          </StoreIcons>
+        </InfoSide>
+      </Content>
+    </WidgetWrapper>
+  );
 };
 
 export default AppDownloadWidget;
