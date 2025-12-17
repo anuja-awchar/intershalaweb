@@ -56,11 +56,15 @@ const FeaturePill = styled.div`
 
 const CardsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr; /* Full width cards on mobile */
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 `;
@@ -199,8 +203,8 @@ const PlacementCourses = () => {
   const courses = [
     {
       role: 'Full Stack Developer',
-      color: '#6c5ce7',
-      gradient: 'linear-gradient(135deg, #f3f0ff 0%, #ffffff 100%)',
+      color: '#1F78E9', // Strong Blue
+      gradient: 'linear-gradient(135deg, #E6F0FC 0%, #FFFFFF 100%)',
       title: 'Full Stack Development Course',
       duration: '6 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹18 LPA',
@@ -209,18 +213,18 @@ const PlacementCourses = () => {
     },
     {
       role: 'Data Scientist',
-      color: '#0984e3',
-      gradient: 'linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%)',
+      color: '#1F78E9', // Blue
+      gradient: 'linear-gradient(135deg, #E6F0FC 0%, #FFFFFF 100%)',
       title: 'Data Science Course',
-      duration: '6 months course with LIVE sessions',
+      duration: '8 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹9 LPA',
       rating: '4.5',
       partners: [<FaMicrosoft />, <FaGoogle />]
     },
     {
       role: 'HR Manager',
-      color: '#d63031',
-      gradient: 'linear-gradient(135deg, #fff0f0 0%, #ffffff 100%)',
+      color: '#E02D7A', // Pink/Magenta
+      gradient: 'linear-gradient(135deg, #FDEDF3 0%, #FFFFFF 100%)',
       title: 'Human Resource Management Course',
       duration: '3 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹11.5 LPA',
@@ -229,8 +233,8 @@ const PlacementCourses = () => {
     },
     {
       role: 'Digital Marketer',
-      color: '#00b894',
-      gradient: 'linear-gradient(135deg, #e6fffa 0%, #ffffff 100%)',
+      color: '#1F78E9', // Blue
+      gradient: 'linear-gradient(135deg, #E6F0FC 0%, #FFFFFF 100%)',
       title: 'Digital Marketing Course',
       duration: '5 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹10 LPA',
