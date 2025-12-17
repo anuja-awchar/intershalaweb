@@ -254,71 +254,117 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 12px;
+    font-size: 13px;
     color: #856404;
-    background: #fff3cd;
-    border: 1px solid #ffeeba;
-    padding: 6px 12px;
-    border-radius: 6px;
+    background: #FFF9E6;
+    border: 1px solid #FFEBA4;
+    padding: 8px 14px;
+    border-radius: 8px;
     width: fit-content;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .placement-course-name {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     color: #222;
-    margin-bottom: 16px;
-    line-height: 1.4;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    min-height: 54px;
+    /* Ensure alignment */
 }
 
 .placement-info-list {
     list-style: none;
     padding: 0;
     margin: 0 0 24px 0;
+    background: #F8F9FA;
+    padding: 16px;
+    border-radius: 12px;
 }
 
 .placement-info-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
     font-size: 14px;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     line-height: 1.5;
+    font-weight: 500;
 }
 
-.placement-info-item span {
-    font-size: 16px;
+.placement-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.placement-icon-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    color: #888;
+    font-size: 12px;
+    flex-shrink: 0;
 }
 
 .placement-partner-section {
     margin-top: auto;
-    border-top: 1px dashed #ddd;
-    /* Dashed line for visual interest */
-    padding-top: 16px;
+    border-top: 1px dashed #E0E0E0;
+    padding-top: 20px;
 }
 
 .placement-partner-text {
-    font-size: 12px;
-    color: #777;
-    margin-bottom: 8px;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 12px;
     font-weight: 500;
 }
 
 .placement-partner-logos {
     display: flex;
-    gap: 14px;
-    color: #555;
-    font-size: 20px;
+    gap: 16px;
     align-items: center;
-    opacity: 0.8;
-    transition: opacity 0.3s;
 }
 
-.placement-card:hover .placement-partner-logos {
+.partner-logo {
+    font-size: 24px;
+    color: #888;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.placement-card:hover .partner-logo {
+    filter: grayscale(0%);
     opacity: 1;
+    transform: scale(1.1);
+    color: #555;
+    /* Fallback for icons without intrinsic color */
+}
+
+/* Specific brand colors on hover if using icons that support it, or rely on original icon colors if SVG */
+.partner-logo:nth-child(1):hover {
+    color: #4285F4;
+}
+
+/* Google Blueish */
+.partner-logo:nth-child(2):hover {
+    color: #FF9900;
+}
+
+/* Amazon Orangeish */
+
+.partner-more {
+    font-size: 12px;
+    color: #aaa;
+    font-weight: 500;
 }
 
 .placement-know-more {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCheck, FaStar, FaGoogle, FaMicrosoft, FaAmazon } from 'react-icons/fa';
+import { FaCheck, FaStar, FaGoogle, FaMicrosoft, FaAmazon, FaClock, FaRupeeSign, FaBolt } from 'react-icons/fa';
 import './PlacementCourses.css';
 
 const PlacementCourses = () => {
@@ -72,17 +72,19 @@ const PlacementCourses = () => {
 
               <div className="placement-card-body">
                 <div className="placement-tag-line">
-                  <span style={{ color: '#ffd700' }}>✦</span> Placement Course with AI
+                  <FaBolt style={{ color: '#ffd700' }} /> Placement Course with AI
                 </div>
 
                 <h4 className="placement-course-name">{course.title}</h4>
 
                 <ul className="placement-info-list">
                   <li className="placement-info-item">
-                    <span>⏱</span> {course.duration}
+                    <div className="placement-icon-circle"><FaClock /></div>
+                    {course.duration}
                   </li>
                   <li className="placement-info-item">
-                    <span>📈</span> {course.salary}
+                    <div className="placement-icon-circle"><FaRupeeSign /></div>
+                    {course.salary}
                   </li>
                 </ul>
 
@@ -90,9 +92,9 @@ const PlacementCourses = () => {
                   <p className="placement-partner-text">Learn from industry experts of</p>
                   <div className="placement-partner-logos">
                     {course.partners.map((Icon, i) => (
-                      <span key={i}>{Icon}</span>
+                      <span key={i} className="partner-logo">{Icon}</span>
                     ))}
-                    <span style={{ fontSize: '12px' }}>& more</span>
+                    <span className="partner-more">& more</span>
                   </div>
                 </div>
 
