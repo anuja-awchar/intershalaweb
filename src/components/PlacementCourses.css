@@ -1,96 +1,118 @@
 .placement-section {
-    padding: 60px 0;
-    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f0f8ff 100%);
+    padding: 80px 0;
+    background: #f0f5ff;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
     position: relative;
+    /* Add a subtle mesh gradient background */
+    background-image:
+        radial-gradient(at 0% 0%, hsla(210, 100%, 96%, 1) 0, transparent 50%),
+        radial-gradient(at 50% 100%, hsla(200, 100%, 96%, 1) 0, transparent 50%);
 }
 
+/* Floating ambient blobs */
 .placement-section::before {
     content: '';
     position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 400px;
-    height: 400px;
-    background: rgba(0, 165, 236, 0.05);
-    border-radius: 50%;
-    filter: blur(60px);
+    top: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, rgba(0, 165, 236, 0.1), rgba(230, 240, 255, 0.4));
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blobFloat 15s ease-in-out infinite alternate;
     z-index: 0;
+    pointer-events: none;
+    filter: blur(40px);
+}
+
+.placement-section::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(255, 200, 150, 0.1));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: blobFloat 20s ease-in-out infinite alternate-reverse;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(50px);
+}
+
+@keyframes blobFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(30px, 50px) rotate(10deg);
+    }
 }
 
 .placement-container {
-    max-width: 1200px;
+    max-width: 95%;
+    /* Maximized width */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
     position: relative;
     z-index: 1;
 }
 
 .placement-header-group {
-    margin-bottom: 40px;
-    animation: fadeInDown 0.8s ease-out;
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    margin-bottom: 70px;
+    text-align: center;
 }
 
 .placement-title {
-    font-size: 32px;
+    font-size: 42px;
     font-weight: 800;
-    color: #1f1f1f;
+    color: #1a1a1a;
     margin-bottom: 24px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    background: linear-gradient(90deg, #333 0%, #00A5EC 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    width: fit-content;
+    justify-content: center;
+    gap: 16px;
+    letter-spacing: -0.8px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* AI Powered Badge Pulse */
 .placement-title::after {
     content: 'AI POWERED';
-    background: linear-gradient(90deg, #FF8C00, #FF516B);
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53);
     color: white;
-    -webkit-text-fill-color: white;
     font-size: 11px;
-    padding: 4px 8px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    animation: pulseBadge 2s infinite;
-    box-shadow: 0 2px 10px rgba(255, 140, 0, 0.3);
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transform: translateY(-4px);
+    animation: pulseAi 3s infinite;
 }
 
-@keyframes pulseBadge {
+@keyframes pulseAi {
     0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.4);
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        transform: translateY(-4px) scale(1);
     }
 
-    70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(255, 140, 0, 0);
+    50% {
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        transform: translateY(-4px) scale(1.05);
     }
 
     100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        transform: translateY(-4px) scale(1);
     }
 }
 
 .placement-features-row {
     display: flex;
+    justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
 }
@@ -98,102 +120,444 @@
 .placement-feature-pill {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: #fff;
-    border: 1px solid #d0e7f7;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #444;
-    box-shadow: 0 4px 10px rgba(0, 165, 236, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 12px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4a4a4a;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
     cursor: default;
 }
 
 .placement-feature-pill:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 165, 236, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 165, 236, 0.15);
     border-color: #00A5EC;
     color: #00A5EC;
+    background: white;
 }
 
-.placement-feature-pill svg {
-    color: #4CAF50;
-    font-size: 16px;
-    transition: transform 0.3s;
-}
-
-.placement-feature-pill:hover svg {
-    transform: scale(1.2) rotate(360deg);
-}
-
+/* Grid Layout */
+/* Grid Layout */
 .placement-cards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Fluid grid for responsiveness */
     gap: 24px;
-    perspective: 1000px;
+    perspective: 2000px;
+    padding: 10px;
 }
 
+/* Card Design - The Hero of Interactivity */
 .placement-card {
     background: white;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
+    border-radius: 28px;
     position: relative;
     display: flex;
     flex-direction: column;
-    animation: fadeInUp 0.8s ease-out backwards;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    height: 100%;
+
+    /* 3D Transform Properties */
+    transform-style: preserve-3d;
+    transform: rotateX(0) rotateY(0);
+
+    /* Gradient Border Setup */
+    background: linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(0, 165, 236, 0.2)) border-box;
+    border: 1px solid transparent;
 }
 
-.placement-card:nth-child(1) {
-    animation-delay: 0.1s;
-    border-top: 4px solid #1F78E9;
+/* Shine Effect */
+.placement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    z-index: 10;
+    pointer-events: none;
+    transition: left 0.7s ease;
 }
 
-.placement-card:nth-child(2) {
-    animation-delay: 0.2s;
-    border-top: 4px solid #1F78E9;
+.placement-card:hover::before {
+    left: 200%;
+    transition: left 0.7s ease 0.1s;
 }
 
-.placement-card:nth-child(3) {
-    animation-delay: 0.3s;
-    border-top: 4px solid #E02D7A;
+.placement-card:hover {
+    transform: translateY(-15px) rotateX(2deg);
+    box-shadow: 0 30px 60px rgba(0, 50, 100, 0.12), 0 0 0 1px rgba(0, 165, 236, 0.1);
 }
 
-.placement-card:nth-child(4) {
-    animation-delay: 0.4s;
-    border-top: 4px solid #1F78E9;
+/* Card Header */
+.placement-card-header {
+    padding: 32px 28px;
+    min-height: 160px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 28px 28px 0 0;
+
+    /* 3D Depth */
+    transform: translateZ(20px);
+    transition: transform 0.4s ease;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    /* Adds a slight dynamic angle to the header bottom */
+    margin-bottom: -20px;
+    /* Offset the clip path space */
+    z-index: 2;
+
+    /* Gradient Animation */
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
 }
 
+.placement-card:hover .placement-card-header {
+    transform: translateZ(30px);
+}
+
+.placement-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    color: #1f1f1f;
+    transform: translateZ(40px);
+    /* Pops out more */
+}
+
+.placement-badge svg {
+    color: #FFC107;
+    filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
+}
+
+.placement-role-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.8;
+    color: #003;
+    margin-bottom: 10px;
+    font-weight: 700;
+    transform: translateZ(25px);
+}
+
+.placement-role-name {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #0f172a;
+    transform: translateZ(30px);
+    padding-bottom: 24px;
+    letter-spacing: -0.5px;
+    /* Extra space for clip path */
+}
+
+/* Card Body */
+.placement-card-body {
+    padding: 32px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 0 0 28px 28px;
+    transform: translateZ(0px);
+    /* Base level */
+    z-index: 1;
+}
+
+.placement-tag-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #B45309;
+    background: #FEF3C7;
+    padding: 8px 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    width: fit-content;
+    transform: translateZ(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.placement-card:hover .placement-tag-line {
+    transform: translateZ(40px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+}
+
+.placement-course-name {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 28px;
+    line-height: 1.4;
+    font-family: 'Outfit', sans-serif;
+    /* Try to induce a font change feel if imported, else falls back */
+    letter-spacing: -0.2px;
+}
+
+.placement-info-list {
+    list-style: none;
+    padding: 20px;
+    margin: 0 0 28px 0;
+    background: #F8FAFC;
+    border: 1px solid #EEF2F6;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.placement-card:hover .placement-info-list {
+    background: #F0F7FF;
+    border-color: #D6E8FF;
+}
+
+.placement-info-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #4B5563;
+    font-weight: 600;
+}
+
+.placement-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.placement-icon-circle {
+    width: 36px;
+    height: 36px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00A5EC;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    font-size: 15px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.placement-card:hover .placement-icon-circle {
+    transform: scale(1.1);
+    color: white;
+    background: #00A5EC;
+    box-shadow: 0 4px 12px rgba(0, 165, 236, 0.3);
+}
+
+/* Partner Section */
+.placement-partner-section {
+    margin-top: auto;
+    border-top: 1px dashed #E2E8F0;
+    padding-top: 24px;
+    margin-bottom: 24px;
+}
+
+.placement-partner-text {
+    font-size: 12px;
+    color: #94A3B8;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.placement-partner-logos {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.partner-logo {
+    font-size: 22px;
+    color: #CBD5E1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateZ(10px);
+}
+
+.placement-card:hover .partner-logo {
+    color: #475569;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.partner-logo:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.partner-logo:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.placement-card:hover .partner-logo:hover {
+    transform: scale(1.2) translateY(-5px);
+    color: #00A5EC;
+}
+
+.partner-more {
+    font-size: 12px;
+    color: #94A3B8;
+    font-weight: 600;
+}
+
+/* Know More Button - The Big Interaction */
+.placement-know-more {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    background: white;
+    color: #00A5EC;
+    border: 2px solid #E0F2FE;
+    padding: 14px 24px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(20px);
+}
+
+/* Button Background Fill Effect */
+.placement-know-more::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #00A5EC;
+    transition: width 0.4s ease;
+    z-index: 0;
+}
+
+.placement-know-more span,
+.placement-know-more svg {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+/* Since the text is bare text in JSX, we trick it by targeting color generally or needing JSX update.
+   Wait, the current JSX is just `Know more >`. I will need to update the JSX to put the text in a span for z-indexing to work perfectly 
+   with the ::before fill. 
+   
+   For now, simple background swap is safer without JSX change, but "Perfect" requires better. I'll stick to a simpler, robust transition 
+   that doesn't require the span z-index hack if I don't change JSX immediately, OR I update JSX.
+   
+   Let's do the safer but still premium version: 
+*/
+
+.placement-card:hover .placement-know-more {
+    background: #00A5EC;
+    color: white;
+    border-color: #00A5EC;
+    box-shadow: 0 8px 20px rgba(0, 165, 236, 0.4);
+    transform: translateZ(50px) translateY(-2px);
+    /* Pops out significantly */
+}
+
+.know-more-icon {
+    font-size: 14px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.placement-card:hover .know-more-icon {
+    transform: translateX(5px);
+}
+
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+    .placement-container {
+        max-width: 90%;
+        /* Slight margin on tablets */
+    }
+
+    .placement-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .placement-container {
+        max-width: 100%;
+        /* Full width on mobile */
+        padding: 0 16px;
+        /* Ensure generic padding */
+    }
+
+    .placement-section {
+        padding: 40px 0;
+    }
+
+    .placement-title {
+        font-size: 32px;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .placement-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 10px;
+    }
+
+    .placement-card {
+        /* Disable heavy 3D on mobile for performance/usability */
+        transform: none !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .placement-card:hover {
+        transform: translateY(-5px) !important;
+    }
+
+    .placement-know-more {
+        background: #00A5EC;
+        color: white;
+    }
+}
+
+/* Keyframes */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(40px) rotateX(10deg);
+        transform: translateY(40px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) rotateX(0);
+        transform: translateY(0);
     }
-}
-
-.placement-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-    z-index: 10;
-}
-
-.placement-card-header {
-    padding: 24px;
-    position: relative;
-    height: 120px;
-    transition: background-size 0.5s;
-    background-size: 200% 200%;
-    animation: gradientShift 5s ease infinite;
 }
 
 @keyframes gradientShift {
@@ -207,213 +571,5 @@
 
     100% {
         background-position: 0% 50%;
-    }
-}
-
-.placement-badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #ff8c00;
-    padding: 4px 8px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-}
-
-.placement-role-title {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 6px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.placement-role-name {
-    font-size: 22px;
-    font-weight: 800;
-    color: #333;
-    line-height: 1.2;
-}
-
-.placement-card-body {
-    padding: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.placement-tag-line {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: #856404;
-    background: #FFF9E6;
-    border: 1px solid #FFEBA4;
-    padding: 8px 14px;
-    border-radius: 8px;
-    width: fit-content;
-    margin-bottom: 24px;
-    font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-}
-
-.placement-course-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: #222;
-    margin-bottom: 20px;
-    line-height: 1.5;
-    min-height: 54px;
-    /* Ensure alignment */
-}
-
-.placement-info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px 0;
-    background: #F8F9FA;
-    padding: 16px;
-    border-radius: 12px;
-}
-
-.placement-info-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 12px;
-    line-height: 1.5;
-    font-weight: 500;
-}
-
-.placement-info-item:last-child {
-    margin-bottom: 0;
-}
-
-.placement-icon-circle {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #eee;
-    color: #888;
-    font-size: 12px;
-    flex-shrink: 0;
-}
-
-.placement-partner-section {
-    margin-top: auto;
-    border-top: 1px dashed #E0E0E0;
-    padding-top: 20px;
-}
-
-.placement-partner-text {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 12px;
-    font-weight: 500;
-}
-
-.placement-partner-logos {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-
-.partner-logo {
-    font-size: 24px;
-    color: #888;
-    filter: grayscale(100%);
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-.placement-card:hover .partner-logo {
-    filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.1);
-    color: #555;
-    /* Fallback for icons without intrinsic color */
-}
-
-/* Specific brand colors on hover if using icons that support it, or rely on original icon colors if SVG */
-.partner-logo:nth-child(1):hover {
-    color: #4285F4;
-}
-
-/* Google Blueish */
-.partner-logo:nth-child(2):hover {
-    color: #FF9900;
-}
-
-/* Amazon Orangeish */
-
-.partner-more {
-    font-size: 12px;
-    color: #aaa;
-    font-weight: 500;
-}
-
-.placement-know-more {
-    margin-top: 20px;
-    color: white;
-    background: #00A5EC;
-    font-weight: 600;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px;
-    border-radius: 8px;
-    transition: all 0.3s;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-/* Interaction: Button appears on hover */
-.placement-card:hover .placement-know-more {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Tablet */
-@media (max-width: 1024px) {
-    .placement-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-    .placement-section {
-        padding: 40px 0;
-    }
-
-    .placement-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .placement-know-more {
-        opacity: 1;
-        transform: translateY(0);
-        background: transparent;
-        color: #00A5EC;
-        padding: 0;
-        justify-content: flex-start;
     }
 }

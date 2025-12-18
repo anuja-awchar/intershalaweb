@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCheck, FaStar, FaGoogle, FaMicrosoft, FaAmazon, FaClock, FaRupeeSign, FaBolt } from 'react-icons/fa';
+import { FaCheck, FaStar, FaGoogle, FaMicrosoft, FaAmazon, FaClock, FaRupeeSign, FaBolt, FaArrowRight } from 'react-icons/fa';
 import './PlacementCourses.css';
 
 const PlacementCourses = () => {
@@ -98,7 +98,10 @@ const PlacementCourses = () => {
                   </div>
                 </div>
 
-                <div className="placement-know-more">Know more &gt;</div>
+                <div className="placement-know-more">
+                  <span>Know more</span>
+                  <FaArrowRight className="know-more-icon" />
+                </div>
               </div>
             </div>
           ))}
