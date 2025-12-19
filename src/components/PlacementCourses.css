@@ -1,5 +1,5 @@
 .placement-section {
-    padding: 30px 0;
+    padding: 20px 0;
     background: #f0f5ff;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
@@ -52,16 +52,17 @@
 }
 
 .placement-container {
-    max-width: 95%;
-    /* Maximized width */
+    max-width: 100%;
+    /* Full width */
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 40px;
+    /* Comfortable edge padding */
     position: relative;
     z-index: 1;
 }
 
 .placement-header-group {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -146,8 +147,8 @@
 /* Grid Layout */
 .placement-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    /* Fluid grid for responsiveness */
+    grid-template-columns: repeat(4, 1fr);
+    /* Force 4 columns on desktop */
     gap: 16px;
     perspective: 2000px;
     padding: 10px;
@@ -202,8 +203,8 @@
 
 /* Card Header */
 .placement-card-header {
-    padding: 16px 20px;
-    min-height: 96px;
+    padding: 12px 16px;
+    min-height: 85px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -278,7 +279,7 @@
 
 /* Card Body */
 .placement-card-body {
-    padding: 16px;
+    padding: 12px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -324,8 +325,8 @@
 
 .placement-info-list {
     list-style: none;
-    padding: 12px;
-    margin: 0 0 12px 0;
+    padding: 8px;
+    margin: 0 0 10px 0;
     background: #F8FAFC;
     border: 1px solid #EEF2F6;
     border-radius: 20px;
@@ -341,7 +342,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     font-size: 14px;
     color: #4B5563;
     font-weight: 600;
@@ -499,8 +500,8 @@
 /* Tablet Responsive */
 @media (max-width: 1024px) {
     .placement-container {
-        max-width: 90%;
-        /* Slight margin on tablets */
+        max-width: 100%;
+        /* Full width on tablets too */
     }
 
     .placement-cards-grid {
