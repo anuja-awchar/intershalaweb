@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaCheck, FaStar, FaGoogle, FaMicrosoft, FaAmazon, FaClock, FaRupeeSign, FaBolt, FaArrowRight } from 'react-icons/fa';
+import { FaCheck, FaStar, FaClock, FaRupeeSign, FaBolt, FaArrowRight } from 'react-icons/fa';
+import { GoogleLogo, MicrosoftLogo, AmazonLogo } from './CompanyLogos';
 import './PlacementCourses.css';
 
 const PlacementCourses = () => {
@@ -12,7 +13,7 @@ const PlacementCourses = () => {
       duration: '6 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹18 LPA',
       rating: '4.5',
-      partners: [<FaGoogle />, <FaAmazon />]
+      partners: [<GoogleLogo />, <AmazonLogo />]
     },
     {
       role: 'Data Scientist',
@@ -22,7 +23,7 @@ const PlacementCourses = () => {
       duration: '8 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹9 LPA',
       rating: '4.5',
-      partners: [<FaMicrosoft />, <FaGoogle />]
+      partners: [<MicrosoftLogo />, <GoogleLogo />]
     },
     {
       role: 'HR Manager',
@@ -32,7 +33,7 @@ const PlacementCourses = () => {
       duration: '3 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹11.5 LPA',
       rating: '4.4',
-      partners: [<FaAmazon />, <FaMicrosoft />]
+      partners: [<AmazonLogo />, <MicrosoftLogo />]
     },
     {
       role: 'Digital Marketer',
@@ -42,7 +43,7 @@ const PlacementCourses = () => {
       duration: '5 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹10 LPA',
       rating: '4.4',
-      partners: [<FaGoogle />, <FaAmazon />]
+      partners: [<GoogleLogo />, <AmazonLogo />]
     },
   ];
 
