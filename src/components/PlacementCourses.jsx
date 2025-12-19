@@ -7,8 +7,8 @@ const PlacementCourses = () => {
   const courses = [
     {
       role: 'Full Stack Developer',
-      color: '#1F78E9', // Strong Blue
-      gradient: 'linear-gradient(135deg, #E6F0FC 0%, #FFFFFF 100%)',
+      color: '#0284c7', // Sky 600
+      gradient: 'linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)', // Vibrant Blue
       title: 'Full Stack Development Course',
       duration: '6 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹18 LPA',
@@ -17,8 +17,8 @@ const PlacementCourses = () => {
     },
     {
       role: 'Data Scientist',
-      color: '#1F78E9', // Blue
-      gradient: 'linear-gradient(135deg, #E6F0FC 0%, #FFFFFF 100%)',
+      color: '#7c3aed', // Violet 600
+      gradient: 'linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%)', // Periwinkle
       title: 'Data Science Course',
       duration: '8 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹9 LPA',
@@ -27,8 +27,8 @@ const PlacementCourses = () => {
     },
     {
       role: 'HR Manager',
-      color: '#E02D7A', // Pink/Magenta
-      gradient: 'linear-gradient(135deg, #FDEDF3 0%, #FFFFFF 100%)',
+      color: '#db2777', // Pink 600
+      gradient: 'linear-gradient(120deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)', // Warm Pink
       title: 'Human Resource Management Course',
       duration: '3 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹11.5 LPA',
@@ -37,8 +37,8 @@ const PlacementCourses = () => {
     },
     {
       role: 'Digital Marketer',
-      color: '#1F78E9', // Blue
-      gradient: 'linear-gradient(135deg, #E6F0FC 0%, #FFFFFF 100%)',
+      color: '#059669', // Emerald 600
+      gradient: 'linear-gradient(120deg, #43e97b 0%, #38f9d7 100%)', // Vibrant Mint
       title: 'Digital Marketing Course',
       duration: '5 months course with LIVE sessions',
       salary: 'Highest salary offered: ₹10 LPA',
