@@ -55,8 +55,8 @@
     max-width: 100%;
     /* Full width */
     margin: 0 auto;
-    padding: 0 40px;
-    /* Comfortable edge padding */
+    padding: 0 10px;
+    /* Minimal padding for edge-to-edge look */
     position: relative;
     z-index: 1;
 }
@@ -149,7 +149,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     /* Force 4 columns on desktop */
-    gap: 16px;
+    gap: 12px;
     perspective: 2000px;
     padding: 10px;
 }
@@ -280,6 +280,8 @@
 /* Card Body */
 .placement-card-body {
     padding: 12px;
+    padding-top: 32px;
+    /* Compensate for header negative margin */
     flex: 1;
     display: flex;
     flex-direction: column;
