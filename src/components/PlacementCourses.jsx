@@ -61,7 +61,7 @@ const PlacementCourses = () => {
 
         <div className="placement-cards-grid">
           {courses.map((course, index) => (
-            <div className="placement-card" key={index}>
+            <div className="placement-card" key={index} style={{ '--card-theme': course.color }}>
               <div
                 className="placement-card-header"
                 style={{ background: course.gradient }}

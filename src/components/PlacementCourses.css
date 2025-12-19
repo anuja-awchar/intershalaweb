@@ -154,6 +154,8 @@
     padding: 10px;
 }
 
+
+
 /* Card Design - The Hero of Interactivity */
 .placement-card {
     background: white;
@@ -172,7 +174,7 @@
 
     /* Gradient Border Setup */
     background: linear-gradient(#fff, #fff) padding-box,
-        linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(0, 165, 236, 0.2)) border-box;
+        linear-gradient(135deg, rgba(255, 255, 255, 0.5), color-mix(in srgb, var(--card-theme), transparent 80%)) border-box;
     border: 1px solid transparent;
 }
 
@@ -198,7 +200,7 @@
 
 .placement-card:hover {
     transform: translateY(-15px) rotateX(2deg);
-    box-shadow: 0 30px 60px rgba(0, 50, 100, 0.12), 0 0 0 1px rgba(0, 165, 236, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 50, 100, 0.12), 0 0 0 1px color-mix(in srgb, var(--card-theme), transparent 90%);
 }
 
 /* Card Header */
@@ -209,6 +211,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     border-radius: 28px 28px 0 0;
 
     /* 3D Depth */
@@ -362,7 +366,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #00A5EC;
+    color: var(--card-theme);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
     font-size: 15px;
     flex-shrink: 0;
@@ -372,8 +376,8 @@
 .placement-card:hover .placement-icon-circle {
     transform: scale(1.1);
     color: white;
-    background: #00A5EC;
-    box-shadow: 0 4px 12px rgba(0, 165, 236, 0.3);
+    background: var(--card-theme);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--card-theme), transparent 70%);
 }
 
 /* Partner Section */
@@ -421,7 +425,7 @@
 
 .placement-card:hover .partner-logo:hover {
     transform: scale(1.2) translateY(-5px);
-    color: #00A5EC;
+    color: var(--card-theme);
 }
 
 .partner-more {
@@ -437,7 +441,7 @@
     justify-content: space-between;
     text-align: center;
     background: white;
-    color: #00A5EC;
+    color: var(--card-theme);
     border: 2px solid #E0F2FE;
     padding: 14px 24px;
     border-radius: 16px;
@@ -458,7 +462,7 @@
     left: 0;
     width: 0%;
     height: 100%;
-    background: #00A5EC;
+    background: var(--card-theme);
     transition: width 0.4s ease;
     z-index: 0;
 }
@@ -481,10 +485,10 @@
 */
 
 .placement-card:hover .placement-know-more {
-    background: #00A5EC;
+    background: var(--card-theme);
     color: white;
-    border-color: #00A5EC;
-    box-shadow: 0 8px 20px rgba(0, 165, 236, 0.4);
+    border-color: var(--card-theme);
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--card-theme), transparent 60%);
     transform: translateZ(50px) translateY(-2px);
     /* Pops out significantly */
 }
@@ -525,15 +529,33 @@
     }
 
     .placement-title {
-        font-size: 32px;
+        font-size: 28px;
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .placement-features-row {
+        gap: 10px;
+    }
+
+    .placement-feature-pill {
+        padding: 10px 20px;
+        font-size: 13px;
+        width: 100%;
+        justify-content: center;
     }
 
     .placement-cards-grid {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 10px;
+    }
+
+    .placement-card-header {
+        min-height: 100px;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        padding-bottom: 24px;
     }
 
     .placement-card {
@@ -547,7 +569,7 @@
     }
 
     .placement-know-more {
-        background: #00A5EC;
+        background: var(--card-theme);
         color: white;
     }
 }
